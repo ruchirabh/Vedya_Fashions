@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+.gradient-text {
+  background: linear-gradient(
+    90deg,
+    #cfdfb1,
+    #afe7c3,
+    #a9e7ee,
+    #def1ba
+  );
+  background-size: 300% 300%;
+  animation: gradientFlow 3s ease infinite;
+
+  background-clip: text;              /* standard */
+  -webkit-background-clip: text;      /* safari/chrome */
+  color: transparent;                 /* standard */
+  -webkit-text-fill-color: transparent; /* safari */
+}
+
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.hover-gradient-text:hover {
+  background: linear-gradient(
+    90deg,
+    #d9f99d,
+    #86efac,
+    #67e8f9,
+    #d9f99d
+  );
+  background-size: 300% 300%;
+  animation: gradientFlow 4s ease infinite;
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+/* Add to your global CSS or create a separate CSS file */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.animate-fade-out-down {
+  animation: fadeOutDown 0.5s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+/* Gradient text animation */
+.gradient-text {
+  background: linear-gradient(90deg, #d9f99d, #86efac, #d9f99d);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-flow 3s ease infinite;
+}
+
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
