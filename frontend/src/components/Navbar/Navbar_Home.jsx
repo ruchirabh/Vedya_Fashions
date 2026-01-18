@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import { Menu, X } from "lucide-react"; // install: npm i lucide-react
 import { useNavigate } from "react-router-dom";
 
-function Navbar() {
+function Navbar_Home() {
   const navigate = useNavigate();
+  const logout = () => {
+  localStorage.removeItem("token");
+  navigate("/login", { replace: true });
+};
+
 
   const [isOpen, setIsOpen] = useState(false);
   const handleScroll = (id) => {
@@ -26,26 +31,26 @@ function Navbar() {
         onClick={() => handleScroll("about")}
         className="text-yellow-50 hover-gradient-text"
       >
-        About Us
+        New Customer
       </button>
       <button
         onClick={() => handleScroll("team")}
         className="text-yellow-50 hover-gradient-text"
       >
-        Our Team
+        New Order
       </button>
       <button
-        onClick={() => navigate("/login")}
+        onClick={() => logout()}
         className="text-yellow-50 hover-gradient-text"
       >
-        Login
+        Logout
       </button>
     </>
   );
 
   return (
     <>
-      {/* Navbar */}
+      {/* Navbar_Home */}
       <div className="w-2/3 max-md:w-full h-12 bg-neutral-950 rounded-lg px-4 flex justify-between items-center">
         {/* Logo */}
         <div className="text-lg font-semibold gradient-text">VedyaFashions</div>
@@ -85,4 +90,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default Navbar_Home;

@@ -1,25 +1,49 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import Navbar from "./components/Navbar/Navbar";
-import Footer from "./components/Footer/Footer";
+import { Routes, Route } from "react-router-dom";
+import PublicLayout from "./Layout/PublicLayout";
+import AppLayout from "./Layout/AppLayout";
+import ProtectedRoute from "./routes/ProtectedRoute";
+
 import LandingPage from "./pages/LandingPage/LandingPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import HomePage from "./pages/HomePage/HomePage";
+
+import PublicRoute from "./routes/PublicRoute";
 
 function App() {
   return (
-    <div className="w-full min-h-screen bg-neutral-900 text-white flex flex-col items-center p-3">
-      {/* Navbar stays at top */}
-      <Navbar />
+    <Routes>
+      {/* PUBLIC ROUTES */}
+      <Route element={<PublicLayout />}>
+        <Route
+          path="/"
+          element={
+            <PublicRoute>
+              <LandingPage />
+            </PublicRoute>
+          }
+        />
 
-      {/* Main content grows naturally */}
-      <main className="w-full flex-1 flex justify-center items-start ">
-        <LandingPage />
-      </main>
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <LoginPage />
+            </PublicRoute>
+          }
+        />
+      </Route>
 
-      {/* Footer stays at bottom */}
-      <Footer />
-    </div>
+      {/* PROTECTED ROUTES */}
+      <Route
+        element={
+          <ProtectedRoute>
+            <AppLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route path="/home" element={<HomePage />} />
+      </Route>
+    </Routes>
   );
 }
 
