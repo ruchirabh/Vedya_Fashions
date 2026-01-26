@@ -1,46 +1,51 @@
 import React, { useState } from "react";
-import { Menu, X } from "lucide-react"; // install: npm i lucide-react
+import { Menu, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-function Navbar_Home() {
+function Navbar_Home({ onNewCustomerClick }) {
   const navigate = useNavigate();
   const logout = () => {
-  localStorage.removeItem("token");
-  navigate("/login", { replace: true });
-};
-
+    localStorage.removeItem("token");
+    navigate("/login", { replace: true });
+  };
 
   const [isOpen, setIsOpen] = useState(false);
-  const handleScroll = (id) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-    setIsOpen(false); // close mobile menu on click
-  };
 
   const NavLinks = () => (
     <>
       <button
-        onClick={() => handleScroll("home")}
+        onClick={() => {
+          navigate("/home");
+          setIsOpen(false);
+        }}
         className="text-yellow-50 hover-gradient-text"
       >
-        Home
+        Dashboard
       </button>
+      
       <button
-        onClick={() => handleScroll("about")}
+        onClick={() => {
+          navigate("/customers/create");
+          setIsOpen(false);
+        }}
         className="text-yellow-50 hover-gradient-text"
       >
         New Customer
       </button>
       <button
-        onClick={() => handleScroll("team")}
+        onClick={() => {
+          navigate("/orders/create");
+          setIsOpen(false);
+        }}
         className="text-yellow-50 hover-gradient-text"
       >
         New Order
       </button>
       <button
-        onClick={() => logout()}
+        onClick={() => {
+          logout();
+          setIsOpen(false);
+        }}
         className="text-yellow-50 hover-gradient-text"
       >
         Logout

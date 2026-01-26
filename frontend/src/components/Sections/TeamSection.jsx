@@ -1,27 +1,29 @@
 import React from "react";
-import tailor1 from "../../assets/Tailors/tailor1.jpg";
-import tailor2 from "../../assets/Tailors/tailor2.jpg";
+import tailor1 from "../../assets/Tailors/tailor1.jpeg";
+import tailor2 from "../../assets/Tailors/tailor2.jpeg";
 import tailor3 from "../../assets/Tailors/tailor3.jpg";
 
 const teamMembers = [
+  
   {
-    name: "Rohan Mehta",
+    name: "B V Uttanapadaraja",
     designation: "Head Tailor",
-    phone: "+91 98765 43210",
-    image: tailor3,
+    phone: "+91 99887 66554",
+    image: tailor1,
   },
   {
-    name: "Sneha Kapoor",
+    name: "Sarika",
     designation: "Ethnic Wear Specialist",
     phone: "+91 91234 56789",
     image: tailor2,
   },
   {
-    name: "Aditya Sharma",
-    designation: "Designer & Alterations",
-    phone: "+91 99887 66554",
-    image: tailor1,
+    name: "Rohan Mehta",
+    designation: "Designer",
+    phone: "+91 98765 43210",
+    image: tailor3,
   },
+  
 ];
 
 function TeamSection() {
