@@ -1,3 +1,4 @@
+// models/Customer.js - Add measurement fields
 const mongoose = require("mongoose");
 
 const customerSchema = new mongoose.Schema(
@@ -5,68 +6,59 @@ const customerSchema = new mongoose.Schema(
     name: {
       type: String,
       required: true,
-      trim: true,
     },
-
     phone: {
       type: String,
       required: true,
     },
-
     photo: {
-      type: String, // image URL
+      type: String,
     },
-
-    /* ================= BLOUSE MEASUREMENTS ================= */
+    address: {
+      type: String,
+    },
+    gender: {
+      type: String,
+      enum: ["male", "female", "other"],
+      default: "other",
+    },
+    // Blouse Measurements
     blouseMeasurements: {
-      liningType: {
-        type: String,
-        enum: ["lining", "without_lining"],
-      },
-
+      liningType: String,
       sareeFall: Number,
       zigzag: Number,
-
       bust: Number,
       waist: Number,
       hip: Number,
-
       sleeveLength: Number,
       sleeveOpening: Number,
-
       shoulderWidth: Number,
       backWidth: Number,
-
       frontNeckDepth: Number,
       backNeckDepth: Number,
     },
-
-    /* ================= CHURIDAR / SALWAR / PANT ================= */
+    // Bottom Wear Measurements (for salwar, churidar, pant)
     bottomWearMeasurements: {
-      type: {
-        type: String,
-        enum: ["churidar", "salwar", "pant"],
-      },
-
-      liningType: {
-        type: String,
-        enum: ["lining", "without_lining"],
-      },
-
-      waist: Number,
-      hip: Number,
+      pantType: String,
       thigh: Number,
       knee: Number,
       ankle: Number,
-
       length: Number,
-      rise: Number, // crotch depth
+      rise: Number,
       seat: Number,
+    },
+    // Track measurement completion
+    measurementsTaken: {
+      type: Boolean,
+      default: false,
+    },
+    measurementDate: {
+      type: Date,
     },
   },
   {
-    timestamps: true, // automatically adds createdAt & updatedAt
-  },
+    timestamps: true,
+  }
 );
 
 module.exports = mongoose.model("Customer", customerSchema);
